@@ -93,7 +93,7 @@ class ObjectTrackerClient:
                     frame_cache.append(frame)
                     frame_image = frame.image.copy()
                     for i, tracker in enumerate(self.trackers):
-                        bbox = tracker.track(1, first_frame.image)
+                        bbox = tracker.track(1, frame)
                         frame_image = frame_utils.draw_bbox(frame_image, bbox, i)
                     cv2.imwrite(os.path.join(self.output_path, f'{str(frame.frame_seq)}.JPEG'), frame_image)
             except (KeyboardInterrupt, SystemExit):
